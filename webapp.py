@@ -17,14 +17,19 @@ def get_state_options(counties):
 	return y
 
 @app.route("/")
-def render_main(counties):
-		counties["County"]
-    return render_template('home.html', options=(get_state_options(counties)))
+def render_main():
+	with open('county_demographics.json') as demographics_data:
+		counties = json.load(demographics_data)
+	return render_template('home.html', options=(get_state_options(counties)))
 
 
 @app.route("/response")
 def render_response():
-  return render_template()
+	fact = request.args['FunFact']
+	for data in conties:
+		if fact == ['State']:
+			print()
+	return render_template()
 
 
 if __name__=="__main__":
