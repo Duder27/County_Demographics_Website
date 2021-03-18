@@ -3,5 +3,14 @@
   <head>
   </head>
   <body>
+  	<form action='/response'>
+  	<label for="states">Choose a state to get a fact about:</label>
+
+  	<select name = "StateSelected">
+  		{{ options }}
+  	</select>
+  	<br>
+  	<input type = "submit" id = "check">
+</form>
   </body>
 </html>
