@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<link rel="stylesheet" href="{{ url_for('static', filename='mystyle.css') }}">
   </head>
   <body>
   	<form action='/response'>
   	<label for="states">Choose a state to get a fact about:</label>
-
   	<select name = "StateSelected">
   		{{ options }}
   	</select>
   	<br>
+  	<label for="states">Choose a county to get a fact about:</label>
+  	<select name = "county_name">
+  		{{ county_options }}
+  	</select>
+  	<br>
   	<input type = "submit" id = "check">
-</form>
+	</form>
   </body>
 </html>

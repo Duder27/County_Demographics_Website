@@ -12,32 +12,46 @@ def get_state_options(counties):
 	y = ''
 	for x in get_state_options:
 		y = y + Markup("<option value=\"" + x + "\">" + x + "</option>")
-		print(y)
 	return y
+
+def get_county_options(counties):
+	get_county_options = []
+	for c in counties:
+		if not(c['County']) in get_county_options:
+			get_county_options.append(c['County'])
+	y = ''
+	for x in get_county_options:
+		y = y + Markup("<option value=\"" + x + "\">" + x + "</option>")
+	return y
+
 
 @app.route("/")
 def render_main():
 	with open('county_demographics.json') as demographics_data:
 		counties = json.load(demographics_data)
-	return render_template('home.html', options = get_state_options(counties))
+	return render_template('home.html', options = get_state_options(counties), county_options = get_county_options(counties))
 
 
 @app.route("/response")
 def render_response():
 	with open('county_demographics.json') as demographics_data:
 		counties = json.load(demographics_data)
-	fact = request.args['StateSelected']
-	fact1 = ""
+	state = request.args['StateSelected']
+	county = request.args['county_name']
+	fact1 = 0
+	fact2 = ""
+	factC = ""
+	factS = ""
 	for data in counties:
-		if fact == data["State"]:
-			first_county = counties[0]["Education"]["High School or Higher"]
-			for amount in counties:
-				amount["Education"]["High School or Higher"]
-				if amount["Education"]["High School or Higher"] > first_county:
-					print(first_county)
-					first_county = amount["Education"]["High School or Higher"]
+		if state == data["State"] and fact1 < data["Education"]["High School or Higher"]:
+			data["Education"]["High School or Higher"]
 			fact1 = data["Education"]["High School or Higher"]
-	return render_template('response.html', response = fact1)
+			fact2 = data["County"]
+		if county == data["County"]:
+			#data["Miscellaneous"]["Language Other than English at Home"]
+			factC = data["Miscellaneous"]["Language Other than English at Home"]
+			factS = data["State"]
+	return render_template('response.html', response = fact1, response2 = state, response3 = fact2, response4 = factC, response5 = factS, response6 = county)
 
 
 if __name__=="__main__":

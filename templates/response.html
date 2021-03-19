@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<link rel="stylesheet" href="{{ url_for('static', filename='mystyle.css') }}">
   </head>
   <body>
-  	<h1>test</h1>
-  	<h1>{{ response }}</h1>
+  	<h1>The county with the highest High School education rate in {{ response2 }} is {{ response3 }} with a rate of {{ response }}%</h1>
+  	<br>
+  	<h1>A fun fact about {{ response6 }} in the state of {{ response5 }} is that {{ response4 }}% of people speak a language other than English at home.</h1>
   </body>
 </html>
