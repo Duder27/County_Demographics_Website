@@ -4,7 +4,7 @@
   	<link rel="stylesheet" href="{{ url_for('static', filename='mystyle.css') }}">
   </head>
   <body>
-  	<form action='/response'>
+  	<form action='/response' method = 'post'>
   	<label for="states">Choose a state to get a fact about:</label>
   	<select name = "StateSelected">
   		{{ options }}
