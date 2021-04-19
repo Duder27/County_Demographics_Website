@@ -36,8 +36,8 @@ def render_main():
 def render_response():
 	with open('county_demographics.json') as demographics_data:
 		counties = json.load(demographics_data)
-	state = request.args['StateSelected']
-	county = request.args['county_name']
+	state = request.form['StateSelected']
+	county = request.form['county_name']
 	fact1 = 0
 	fact2 = ""
 	factC = ""
